@@ -36,17 +36,25 @@ function mouseReleased() {
 	stroke(255, 0, 0);
 	strokeWeight(10);
 	line(start.x, start.y, end.x, end.y);
+	var widthDiff, heightDiff;
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+		widthDiff = 10;
+		heightDiff = 10;
+	} else {
+		widthDiff = width / 4;
+		heightDiff = height / 4;
+	}
 	var moved = false;
-	if (start.x - end.x > width / 4) {
+	if (start.x - end.x > widthDiff) {
 		t048.left();
 		moved = true;
-	} else if (end.x - start.x > width / 4) {
+	} else if (end.x - start.x > widthDiff) {
 		t048.right();
 		moved = true;
-	} else if (start.y - end.y > height / 4) {
+	} else if (start.y - end.y > heightDiff) {
 		t048.up();
 		moved = true;
-	} else if (end.y - start.y > height / 4) {
+	} else if (end.y - start.y > heightDiff) {
 		t048.down();
 		moved = true;
 	}
